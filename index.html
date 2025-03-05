@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
+    <title>Coming Soon | Your Business Name</title>
     <style>
         body {
             display: flex;
@@ -14,6 +14,8 @@
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
+            flex-direction: column;
+            padding: 20px;
         }
         .container {
             max-width: 600px;
@@ -25,18 +27,84 @@
         }
         p {
             font-size: 1.2rem;
+            margin-bottom: 15px;
         }
         .countdown {
             font-size: 1.5rem;
             font-weight: bold;
+        }
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin: 5px;
+            transition: background 0.3s ease;
+        }
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: white;
+            text-decoration: underline;
+        }
+        input[type=email] {
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffcc00;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .message {
+            margin-top: 10px;
+            color: #ffcc00;
+            font-size: 1rem;
+            font-weight: bold;
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Coming Soon</h1>
-        <p>We're working on something amazing. Stay tuned!</p>
+        <p>We’re working on something amazing. Stay tuned!</p>
         <p class="countdown" id="countdown"></p>
+        
+        <form id="subscribeForm">
+            <p>Subscribe for updates:</p>
+            <input type="email" id="emailInput" placeholder="Enter your email" required>
+            <button type="submit">Notify Me</button>
+            <p class="message" id="message">Thank you! You’ve been subscribed.</p>
+        </form>
+        
+        <div class="social-links">
+            <p>Follow us:</p>
+            <a href="https://facebook.com/yourpage" target="_blank">Facebook</a>
+            <a href="https://wa.me/yourwhatsapp" target="_blank">WhatsApp</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 Your Business Name | <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+        </div>
     </div>
 
     <script>
@@ -56,6 +124,15 @@
             setInterval(updateCountdown, 1000 * 60 * 60);
         }
         countdownTimer();
+        
+        document.getElementById("subscribeForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("message").style.display = "block";
+            document.getElementById("emailInput").value = "";
+            setTimeout(() => {
+                document.getElementById("message").style.display = "none";
+            }, 3000);
+        });
     </script>
 </body>
 </html>
